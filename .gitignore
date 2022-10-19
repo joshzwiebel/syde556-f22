@@ -26,3 +26,5 @@ build/
 *.cpt
 
 .idea/
+
+.vscode/
