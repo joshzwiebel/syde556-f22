@@ -13,7 +13,7 @@
 \newcommand{\Fun}[1]{\mathit{\textcolor{chameleon3}{#1}}}
 \newcommand{\CC}{\circledast}
 
-\date{November 1 \& 3, 2021}
+\date{November 10 \& 11, 2022}
 \title{SYDE 556/750 \\ Simulating Neurobiological Systems \\ Lecture 10: Symbols and Symbol-like Representations}
 
 \begin{document}
@@ -33,6 +33,15 @@
 			\item \enquote{The number eight comes after the number nine}: $$\Pred{isSucc}(\Obj{EIGHT}, \Obj{NINE})\,.$$
 			\item \enquote{All dogs chase cats}: $$\forall x \forall y \, \big ( \Pred{isDog}(x) \wedge \Pred{isCat}(y) \big) \rightarrow \Pred{doesChase}(x, y)\,.$$
 			\item \enquote{Anne knows that Bill thinks that Charlie likes Dave}:$$\Pred{knows}\Big(\Obj{ANNE}, ``\Pred{thinks}\big(\Obj{BILL}, `\Pred{likes}(\Obj{CHARLIE}, \Obj{DAVE})\text{'}\big)\text{''}\Big)\,.$$
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Jackendoff's Challenges}
+		\begin{itemize}
+			\item The Binding Problem
+			\item The Problem of Two
+			\item The Problem of Variables
+			\item Working Memory versus Long-Term Memory
 		\end{itemize}
 	\end{frame}
 
@@ -206,6 +215,24 @@
 	\begin{frame}{Circular Convolution: Dissimilarity and Reversibility}
 		\centering
 		\includegraphics[height=7.25cm]{media/cconv_sim.pdf}
+	\end{frame}
+
+  \begin{frame}{Circular Convolution: Encoding Numbers}
+		\begin{itemize}
+		\item Spaun uses an interesting encoding to capture number relations.
+		\item Start with a random vector $\Obj{ONE}$, then
+    \begin{align*}
+      \Obj{TWO} &= \Obj{ONE} \CC \Obj{ONE} \,, \\
+      \Obj{THREE} &= \Obj{ONE} \CC \Obj{TWO} = \Obj{ONE} \CC \Obj{ONE} \CC \Obj{ONE} \,, \\
+      \Obj{NUMBER\text{-$k$}} &= \underbrace{\Obj{ONE} \CC \Obj{ONE} \CC \text{\textellipsis} \CC \Obj{ONE}}_{\text{$k$-times}}\\
+        &=\Obj{ONE}^k \,.
+    \end{align*}
+		\item Which is a slight abuse of notation. Also note,
+    \begin{align*}
+      \Obj{ONE}^k &= \mathcal{DFT}^{-1} \big( \mathcal{DFT}(\Obj{ONE})^k \big) \,,
+    \end{align*}
+    \item Where inside the bracket is a Hadamard exponent.
+		\end{itemize}
 	\end{frame}
 
 	\begin{frame}{Raven's Progressive Matrices (I)}
